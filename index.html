@@ -85,6 +85,10 @@ body.light .card p{
 body.light footer{
   color:#444;
 }
+#reviewText{
+  font-style:italic;
+  color:#fff;
+}
   
 </style>
 </head>
@@ -205,6 +209,13 @@ font-weight:bold;
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
   </a>
 </div>
+<!-- ⭐ MÜŞTƏRİ RƏYLƏRİ -->
+<div class="card">
+  <h3>⭐ Müştəri Rəyləri</h3>
+  <p id="reviewText">Çox sürətli və keyfiyyətli xidmət 👍</p>
+  <b id="reviewName">— Elvin R.</b>
+  <p>⭐⭐⭐⭐⭐</p>
+</div>
 
 <footer>© 2025-2026 BrendPanel.az</footer>
 <!-- 🔴 CANLI SİFARİŞ BİLDİRİŞİ -->
@@ -274,6 +285,21 @@ document.addEventListener("DOMContentLoaded", () => {
   applyTheme(savedTheme);
 });
 </script>
-  
+ <script>
+const reviews = [
+  {text:"Çox sürətli və güvənli paneldir 👍", name:"— Elvin R."},
+  {text:"Qiymətlər çox münasibdir 🔥", name:"— Nihad M."},
+  {text:"Reels izlenmeleri problemsiz gəldi 👌", name:"— Aysel Q."},
+  {text:"WhatsApp dəstək superdir 💯", name:"— Murad H."}
+];
+
+let i = 0;
+setInterval(()=>{
+  i = (i + 1) % reviews.length;
+  document.getElementById("reviewText").innerText = reviews[i].text;
+  document.getElementById("reviewName").innerText = reviews[i].name;
+},4000);
+</script>
+ 
 </body>
 </html>
