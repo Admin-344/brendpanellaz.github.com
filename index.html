@@ -100,10 +100,48 @@ input, textarea, select{
   margin:6px 0;
 }
 </style>
+ /* ===== HERO BANNER ===== */
+.hero{
+  background: linear-gradient(135deg,#111,#000);
+  border:2px solid #ffd700;
+  border-radius:20px;
+  padding:30px 20px;
+  margin-bottom:25px;
+  box-shadow:0 0 40px rgba(255,215,0,.6);
+  animation: zoomHero 6s infinite;
+}
+
+.hero h1{
+  font-size:26px;
+  margin-bottom:10px;
+  animation: fadeText 2s ease;
+}
+
+.hero p{
+  color:#fff;
+  font-size:14px;
+}
+
+@keyframes zoomHero{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.03)}
+  100%{transform:scale(1)}
+}
+
+@keyframes fadeText{
+  from{opacity:0}
+  to{opacity:1}
+}
+ 
 </head>
 
 <body>
 <div class="container">
+<!-- HERO BANNER -->
+<div class="hero">
+  <h1 id="heroText">🔥 Ən ucuz SMM paketləri buradadır!</h1>
+  <p>💎 TikTok & Instagram • Real və sürətli</p>
+</div>
 
 <div class="logo">👑</div>
 <div class="title">BrendPanel.az</div>
@@ -221,6 +259,27 @@ input, textarea, select{
 <footer>© 2025-2026 BrendPanel.az</footer>
 
 <script>
+<script>
+// HERO TEXT SLIDER
+const heroTexts=[
+  "🔥 Ən ucuz SMM paketləri buradadır!",
+  "🚀 TikTok & Instagram üçün REAL xidmətlər",
+  "💰 3 AZN-dən başlayan paketlər",
+  "⭐ 500+ məmnun müştəri"
+];
+
+let h=0;
+setInterval(()=>{
+  const hero=document.getElementById("heroText");
+  hero.style.opacity=0;
+  setTimeout(()=>{
+    hero.innerText=heroTexts[h];
+    hero.style.opacity=1;
+    h=(h+1)%heroTexts.length;
+  },500);
+},3000);
+</script>
+  
 // Dark / Light Mode
 const toggleBtn=document.getElementById("themeToggle");
 function applyTheme(theme){
