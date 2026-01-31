@@ -178,6 +178,46 @@ footer{font-size:13px;color:#aaa;margin-top:30px}
 </div>
 
 <footer>© 2025-2026 BrendPanel.az</footer>
+<!-- 🔴 CANLI SİFARİŞ BİLDİRİŞİ -->
+<div id="liveOrder" style="
+position:fixed;
+bottom:20px;
+left:20px;
+background:#111;
+color:#fff;
+padding:12px 16px;
+border-radius:12px;
+box-shadow:0 0 20px rgba(0,0,0,.6);
+font-size:13px;
+display:none;
+z-index:9999;
+">
+</div>
+
+<script>
+const orders = [
+  "📦 TikTok — 10.000 İzlənmə alındı",
+  "📦 Instagram — 1.000 Real Takipçi alındı",
+  "📦 TikTok — 1.000 Bəyənmə alındı",
+  "📦 Instagram — Reels 100.000 İzlənmə",
+  "📦 TikTok — Keşfet Paketi alındı"
+];
+
+function showLiveOrder() {
+  const box = document.getElementById("liveOrder");
+  const randomOrder = orders[Math.floor(Math.random() * orders.length)];
+  const minutes = Math.floor(Math.random() * 5) + 1;
+
+  box.innerHTML = `<b>${minutes} dəqiqə əvvəl</b><br>${randomOrder}`;
+  box.style.display = "block";
+
+  setTimeout(() => {
+    box.style.display = "none";
+  }, 5000);
+}
+
+setInterval(showLiveOrder, 12000);
+</script>
 
 </div>
 </body>
