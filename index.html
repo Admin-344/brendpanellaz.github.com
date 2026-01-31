@@ -67,6 +67,7 @@ body{
 .whatsapp img{width:55px}
 
 footer{font-size:13px;color:#aaa;margin-top:30px}
+
 body.light{
   background:#f4f4f4;
   color:#000;
@@ -82,6 +83,7 @@ body.light .card p{
 body.light footer{
   color:#444;
 }
+
 #reviewText{
   font-style:italic;
   color:#fff;
@@ -186,12 +188,14 @@ input, textarea, select{
   </a>
 </div>
 
-<!-- ⭐ MÜŞTƏRİ RƏYLƏRİ SLİDER -->
-<div class="card">
+<!-- ⭐ MÜŞTƏRİ RƏYLƏRİ -->
+<div class="card" id="customerReviews">
   <h3>⭐ Müştəri Rəyləri</h3>
-  <p id="reviewText">Çox sürətli və keyfiyyətli xidmət 👍</p>
-  <b id="reviewName">— Elvin R.</b>
-  <p>⭐⭐⭐⭐⭐</p>
+  <div id="reviewsSlider">
+    <p id="reviewText">Çox sürətli və keyfiyyətli xidmət 👍</p>
+    <b id="reviewName">— Elvin R.</b>
+    <p>⭐⭐⭐⭐⭐</p>
+  </div>
 </div>
 
 <!-- ⭐ MÜŞTƏRİ RƏY FORMU -->
@@ -210,7 +214,6 @@ input, textarea, select{
     </select>
   </div>
   <button id="submitReview" style="padding:6px 12px;margin-top:6px;background:#25D366;color:#000;font-weight:bold;border-radius:6px;border:none;cursor:pointer;">Göndər</button>
-  <div id="allReviews" style="margin-top:12px;text-align:left;"></div>
 </div>
 
 <footer>© 2025-2026 BrendPanel.az</footer>
@@ -232,7 +235,7 @@ z-index:9999;
 
 <script>
 // Dark / Light Mode
-const toggleBtn = document.getElementById("themeToggle");
+const toggleBtn=document.getElementById("themeToggle");
 function applyTheme(theme){
   if(theme==="light"){document.body.classList.add("light");toggleBtn.innerText="☀️ Light Mode";}
   else{document.body.classList.remove("light");toggleBtn.innerText="🌙 Dark Mode";}
@@ -274,14 +277,14 @@ function showLiveOrder(){
 }
 setInterval(showLiveOrder,12000);
 
-// Rəy Formu
+// Rəy Formu (birbaşa Müştəri Rəyləri bölməsinə əlavə olunur)
 const submitBtn=document.getElementById("submitReview");
-const allReviews=document.getElementById("allReviews");
+const customerReviews=document.getElementById("customerReviews");
 let reviewsList=JSON.parse(localStorage.getItem("reviewsList"))||[];
 reviewsList.forEach(r=>{
   const p=document.createElement("p");
   p.innerHTML=`<b>${r.name}</b> ${r.stars}<br>${r.text}`;
-  allReviews.appendChild(p);
+  customerReviews.appendChild(p);
 });
 submitBtn.addEventListener("click",()=>{
   const name=document.getElementById("reviewerName").value.trim();
@@ -295,7 +298,7 @@ submitBtn.addEventListener("click",()=>{
   localStorage.setItem("reviewsList",JSON.stringify(reviewsList));
   const p=document.createElement("p");
   p.innerHTML=`<b>${name}</b> ${stars}<br>${text}`;
-  allReviews.appendChild(p);
+  customerReviews.appendChild(p);
   document.getElementById("reviewerName").value="";
   document.getElementById("reviewTextInput").value="";
   document.getElementById("reviewStars").value="";
