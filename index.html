@@ -67,6 +67,25 @@ body{
 .whatsapp img{width:55px}
 
 footer{font-size:13px;color:#aaa;margin-top:30px}
+body.light{
+  background:#f4f4f4;
+  color:#000;
+}
+
+body.light .card{
+  background:#fff;
+  border:1px solid #ccc;
+  box-shadow:0 0 10px rgba(0,0,0,.1);
+}
+
+body.light .card p{
+  color:#000;
+}
+
+body.light footer{
+  color:#444;
+}
+  
 </style>
 </head>
 
@@ -76,6 +95,16 @@ footer{font-size:13px;color:#aaa;margin-top:30px}
 <div class="logo">👑</div>
 <div class="title">BrendPanel.az</div>
 <div class="subtitle">🇦🇿 Ucuz • Güvənli • Sürətli SMM Panel</div>
+<button id="themeToggle" style="
+margin-top:10px;
+padding:8px 16px;
+border:none;
+border-radius:20px;
+cursor:pointer;
+font-weight:bold;
+">
+🌙 Dark Mode
+</button>
 
 <div class="card">
   <h3>⭐ Statistikamız</h3>
@@ -220,5 +249,31 @@ setInterval(showLiveOrder, 12000);
 </script>
 
 </div>
+<script>
+const toggleBtn = document.getElementById("themeToggle");
+
+function applyTheme(theme){
+  if(theme === "light"){
+    document.body.classList.add("light");
+    toggleBtn.innerText = "☀️ Light Mode";
+  }else{
+    document.body.classList.remove("light");
+    toggleBtn.innerText = "🌙 Dark Mode";
+  }
+}
+
+toggleBtn.addEventListener("click", () => {
+  const current = localStorage.getItem("theme") || "dark";
+  const next = current === "dark" ? "light" : "dark";
+  localStorage.setItem("theme", next);
+  applyTheme(next);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const savedTheme = localStorage.getItem("theme") || "dark";
+  applyTheme(savedTheme);
+});
+</script>
+  
 </body>
 </html>
