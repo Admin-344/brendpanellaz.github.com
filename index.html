@@ -7,6 +7,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+ #onlineCount,#orderCount{
+  color:#00ff9c;
+  font-size:20px;
+  text-shadow:0 0 10px #00ff9c;
+}
+ 
 body{
   margin:0;
   font-family:'Segoe UI',sans-serif;
@@ -120,6 +126,12 @@ input, textarea, select{
   <p>📦 1.200+ Uğurlu Sifariş</p>
   <p>🔒 100% Güvənli Xidmət</p>
 </div>
+<!-- Online Sayğac -->
+<div class="card">
+  <h3>📊 Canlı Aktivlik</h3>
+  <p>🟢 Online istifadəçi: <b id="onlineCount">120</b></p>
+  <p>🛒 Bu gün sifariş: <b id="orderCount">35</b></p>
+</div>
 
 <!-- TIKTOK Paketləri -->
 <div class="card"><h3>🎵 TikTok Paketləri</h3></div>
@@ -221,6 +233,25 @@ input, textarea, select{
 <footer>© 2025-2026 BrendPanel.az</footer>
 
 <script>
+// Online user sayğacı
+let online = 120 + Math.floor(Math.random()*20);
+let orders = 35 + Math.floor(Math.random()*10);
+
+// Online istifadəçi dəyişir
+setInterval(()=>{
+  online += Math.floor(Math.random()*3 - 1);
+  if(online < 80) online = 90;
+  document.getElementById("onlineCount").innerText = online;
+},3000);
+
+// Sifariş sayı artır
+setInterval(()=>{
+  if(Math.random() < 0.4){
+    orders++;
+    document.getElementById("orderCount").innerText = orders;
+  }
+},6000);
+  
 // Dark / Light Mode
 const toggleBtn=document.getElementById("themeToggle");
 function applyTheme(theme){
