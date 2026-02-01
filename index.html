@@ -116,10 +116,32 @@ input, textarea, select{
   100% { transform: translateY(100vh); }
 }
 </style>
+<style>
+#welcome{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:black;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:99999;
+}
+#welcome h1{
+  color:gold;
+  font-size:36px;
+}
+</style>
   
 </head>
 
 <body>
+<div id="welcome">
+  <h1>👋 Xoş gəldiniz!</h1>
+</div>
+  
 <div class="container">
 
 <div class="logo">👑</div>
@@ -338,6 +360,12 @@ submitBtn.addEventListener("click",()=>{
   document.getElementById("reviewStars").value="";
 });
 </script>
+<script>
+setTimeout(function(){
+  document.getElementById("welcome").style.display="none";
+},3000);
+</script>
+  
 <script>
 for (let i = 0; i < 20; i++) {
   let snow = document.createElement("div");
